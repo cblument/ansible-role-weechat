@@ -1,0 +1,4 @@
+---
+# tasks file for weechat
+- include: debian.yml
+  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'

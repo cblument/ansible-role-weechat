@@ -1,0 +1,24 @@
+---
+# tasks file for weechat
+- name: Install dependencies
+  apt: pkg=apt-transport-https
+       state=present
+       update_cache=yes
+       cache_valid_time=3600
+
+- name: Get repository key
+  apt_key: id=11E9DE8848F2B65222AA75B8D1820DB22A11534E
+           keyserver=pool.sks-keyservers.net
+           state=present
+
+- name: Add Debian Repo
+  apt_repository: repo="deb https://weechat.org/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
+                  state=present
+                  update_cache=yes
+
+- name: Install Package
+  apt: pkg={{ item }}
+       state=present
+  with_items:
+    - weechat-curses
+    - weechat-plugins
