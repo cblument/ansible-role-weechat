@@ -1,4 +1,4 @@
-Role Name
+ansible-role-weechat
 =========
 
 Ansible role to install weechat
